@@ -7,7 +7,7 @@
   "use strict";
 
   // ── Replace this with your actual AWS API Gateway endpoint ──────────────
-  const API_ENDPOINT = "https://YOUR_API_ID.execute-api.us-east-1.amazonaws.com/prod/chat";
+  const API_ENDPOINT = "https://9kpagzb0r2.execute-api.us-east-1.amazonaws.com/prod/chat";
 
   // ── DOM references ────────────────────────────────────────────────────────
   const toggle   = document.getElementById("chat-toggle");
