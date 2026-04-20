@@ -1,0 +1,18 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - echo "Starting Amplify build..."
+    build:
+      commands:
+        - echo "Static site - no build step needed"
+    postBuild:
+      commands:
+        - echo "Build complete"
+  artifacts:
+    baseDirectory: /
+    files:
+      - "**/*"
+  cache:
+    paths: []

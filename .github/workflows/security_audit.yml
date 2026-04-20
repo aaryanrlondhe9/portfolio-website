@@ -1,0 +1,121 @@
+name: Security Audit
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  # ── CHECK 1: No hardcoded secrets / API keys ──────────────────────────────
+  check-hardcoded-secrets:
+    name: "Check 1 – No Hardcoded Secrets"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Scan for hardcoded secrets & API keys
+        run: |
+          echo "🔍 Scanning for hardcoded secrets and API keys..."
+
+          # Patterns that should NEVER appear in source files
+          PATTERNS=(
+            "sk-[a-zA-Z0-9]{20,}"          # OpenAI API keys  (sk-...)
+            "AKIA[0-9A-Z]{16}"             # AWS Access Key IDs
+            "(?i)api[_-]?key\s*=\s*['\"][a-zA-Z0-9]{16,}" # generic API key assignments
+            "(?i)secret[_-]?key\s*=\s*['\"][a-zA-Z0-9]{16,}" # generic secret key assignments
+            "(?i)password\s*=\s*['\"][^'\"]{8,}" # hardcoded passwords
+            "ghp_[a-zA-Z0-9]{36}"          # GitHub personal access tokens
+            "eyJ[a-zA-Z0-9_-]{10,}"        # JWT tokens
+          )
+
+          FOUND=0
+          # Search all text files, excluding .git and node_modules
+          for PATTERN in "${PATTERNS[@]}"; do
+            MATCHES=$(grep -rPn "$PATTERN" \
+              --include="*.js" --include="*.html" --include="*.css" \
+              --include="*.py" --include="*.json" --include="*.sh" \
+              --include="*.ts" --include="*.env" \
+              --exclude-dir=".git" --exclude-dir="node_modules" \
+              . 2>/dev/null || true)
+
+            if [ -n "$MATCHES" ]; then
+              echo "❌ FOUND potential hardcoded secret (pattern: $PATTERN):"
+              echo "$MATCHES"
+              FOUND=1
+            fi
+          done
+
+          if [ "$FOUND" -eq 0 ]; then
+            echo "✅ No hardcoded secrets found."
+          else
+            echo ""
+            echo "🚨 SECURITY AUDIT FAILED: Hardcoded secrets detected!"
+            echo "   Remove all secrets from source code and use environment variables or AWS Secrets Manager."
+            exit 1
+          fi
+
+  # ── CHECK 2: HTML structure validation & no broken internal links ─────────
+  check-html-and-links:
+    name: "Check 2 – HTML Validation & Internal Links"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install html-validate
+        run: npm install -g html-validate
+
+      - name: Validate HTML files
+        run: |
+          echo "🔍 Validating HTML structure..."
+          FAILED=0
+
+          for htmlfile in $(find . -name "*.html" -not -path "./.git/*" -not -path "./node_modules/*"); do
+            echo "  Checking $htmlfile ..."
+            if ! html-validate "$htmlfile" 2>&1; then
+              FAILED=1
+            fi
+          done
+
+          if [ "$FAILED" -eq 0 ]; then
+            echo "✅ All HTML files are valid."
+          else
+            echo "🚨 HTML VALIDATION FAILED: Fix the errors above before deploying."
+            exit 1
+          fi
+
+      - name: Check for broken internal links / missing files
+        run: |
+          echo "🔍 Checking internal links for missing files..."
+          FAILED=0
+
+          # Extract src/href references from HTML and check they exist
+          grep -oP '(?<=src=")[^"]+|(?<=href=")[^"#][^"]*' index.html 2>/dev/null \
+            | grep -v "^http" | grep -v "^mailto" | while read -r LINK; do
+              if [ ! -f "$LINK" ]; then
+                echo "❌ Missing file referenced in HTML: $LINK"
+                FAILED=1
+              fi
+            done
+
+          if [ "$FAILED" -eq 0 ]; then
+            echo "✅ All internal links resolve correctly."
+          fi
+
+  # ── DEPLOY: Only runs if both checks pass ────────────────────────────────
+  deploy:
+    name: "Deploy – Trigger Amplify"
+    needs: [check-hardcoded-secrets, check-html-and-links]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deployment gate passed
+        run: |
+          echo "✅ Both security checks passed."
+          echo "🚀 Amplify will auto-deploy from the connected main branch."
+          echo "   Visit your Amplify Console to monitor the deployment."

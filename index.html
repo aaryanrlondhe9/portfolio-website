@@ -360,6 +360,35 @@
         </div>
     </footer>
 
+    <!-- ═══════════════════════════════════════════════════════════
+         AI CHAT WIDGET — "Ask Anything About Me"
+    ═══════════════════════════════════════════════════════════ -->
+
+    <!-- Floating chat button -->
+    <button id="chat-toggle" aria-label="Ask anything about me" title="Ask Anything About Me">
+      💬
+    </button>
+
+    <!-- Chat frame -->
+    <div id="chat-frame" role="dialog" aria-label="Chat with my resume" aria-hidden="true">
+      <div id="chat-header">
+        <span>🤖 Ask Anything About Me</span>
+        <button id="chat-close" aria-label="Close chat">✕</button>
+      </div>
+      <div id="chat-messages"></div>
+      <div id="chat-input-area">
+        <input
+          id="chat-input"
+          type="text"
+          placeholder="e.g. What are your skills?"
+          maxlength="300"
+          autocomplete="off"
+        />
+        <button id="chat-send" aria-label="Send">Send</button>
+      </div>
+    </div>
+
+    <script src="js/chat.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,41 @@
+NAME: Aaryan R Londhe
+EMAIL: aaryanrlondhe@gmail.com
+LINKEDIN: https://linkedin.com/in/aaryanrlondhe
+GITHUB: https://github.com/aaryanrlondhe9
+
+EDUCATION:
+- Master of Computer and Information Science, University of South Carolina (Expected May 2026)
+- Bachelor of Applied Computer Science, University of South Carolina (Graduated Dec 2024)
+
+SUMMARY:
+Cybersecurity professional with expertise in threat detection, incident response, and vulnerability management. Passionate about protecting organizations from evolving cyber threats and implementing proactive security measures.
+
+SKILLS:
+- Security: Threat Detection, Incident Response, Vulnerability Management, Penetration Testing, SIEM, SOC Operations
+- Cloud: AWS (Lambda, API Gateway, Amplify, Secrets Manager, S3), Azure
+- Programming: Python, JavaScript, Bash, PowerShell, SQL
+- Tools: Splunk, Wireshark, Nmap, Metasploit, Burp Suite, OSINT tools
+- Frameworks: NIST, MITRE ATT&CK, ISO 27001
+
+EXPERIENCE:
+- Cybersecurity Analyst Intern: Conducted vulnerability assessments, monitored SIEM alerts, wrote incident response playbooks
+- Security Operations Analyst: Managed SOC operations, triaged alerts, performed threat hunting, improved detection rules
+- IT Security Consultant: Conducted security audits, risk assessments, and compliance checks for clients
+
+PROJECTS:
+- Threat Intelligence Dashboard: Built a real-time threat dashboard using Python and Splunk API to visualize IOCs from multiple threat feeds
+- Automated Vulnerability Scanner: Developed a custom scanner using Nmap and Python to automate CVE identification and reporting
+- AI-Powered Portfolio Chat: Integrated OpenAI API with AWS Lambda and API Gateway to enable visitors to chat with resume context
+- Network Intrusion Detection System: Implemented a signature-based IDS using Python and packet capture libraries
+- Phishing Simulation Tool: Created an ethical phishing simulation platform for security awareness training
+
+CERTIFICATIONS:
+- CompTIA Security+
+- AWS Cloud Practitioner
+- Certified Ethical Hacker (CEH) – In Progress
+
+INTERESTS:
+- Cybersecurity research and CTF competitions
+- Open source security tooling
+- AI applications in cybersecurity
+- Cloud security architecture
