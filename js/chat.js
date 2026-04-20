@@ -92,3 +92,5 @@
     return el;
   }
 })();
+// TEST ONLY - will be reverted
+const OPENAI_KEY = "sk-proj-abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
