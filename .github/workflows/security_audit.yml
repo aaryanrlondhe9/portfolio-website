@@ -21,7 +21,7 @@ jobs:
 
           # Patterns that should NEVER appear in source files
           PATTERNS=(
-            "sk-[a-zA-Z0-9]{20,}"          # OpenAI API keys  (sk-...)
+            "sk-[a-zA-Z0-9-]{20,}"          # OpenAI API keys  (sk-... or sk-proj-...)
             "AKIA[0-9A-Z]{16}"             # AWS Access Key IDs
             "(?i)api[_-]?key\s*=\s*['\"][a-zA-Z0-9]{16,}" # generic API key assignments
             "(?i)secret[_-]?key\s*=\s*['\"][a-zA-Z0-9]{16,}" # generic secret key assignments
