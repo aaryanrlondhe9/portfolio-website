@@ -20,7 +20,7 @@
   // ── Open / Close chat ─────────────────────────────────────────────────────
   toggle.addEventListener("click", () => {
     const isOpen = frame.classList.toggle("open");
-    frame.setAttribute("aria-hidden", String(!isOpen));
+    
     toggle.setAttribute("aria-expanded", String(isOpen));
     if (isOpen && messages.children.length === 0) {
       appendMessage("bot", "👋 Hi! I'm Aaryan's AI assistant. Ask me anything about his background, skills, or experience!");
@@ -30,7 +30,7 @@
 
   closeBtn.addEventListener("click", () => {
     frame.classList.remove("open");
-    frame.setAttribute("aria-hidden", "true");
+    
     toggle.setAttribute("aria-expanded", "false");
   });
 
