@@ -1,0 +1,320 @@
+/* ====================================
+   RESPONSIVE DESIGN - TABLETS & MOBILE
+   ==================================== */
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+    /* Navigation */
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #2c3e50;
+        padding: 1rem 0;
+        gap: 0;
+        list-style: none;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        border-bottom: 1px solid #34495e;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 1rem 2rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 80px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* About Section */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Experience Timeline */
+    .timeline::before {
+        left: 0;
+    }
+
+    .timeline-item {
+        width: 100%;
+        margin-left: 0 !important;
+        padding-left: 40px !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+    }
+
+    .timeline-date {
+        text-align: left;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Skills Content */
+    .skills-content {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact Content */
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Section Headings */
+    .about h2,
+    .experience h2,
+    .projects h2,
+    .skills h2,
+    .contact h2 {
+        font-size: 2rem;
+    }
+
+    /* Form Buttons */
+    .form-group button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+    /* Navigation */
+    .navbar-brand h1 {
+        font-size: 1.2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    /* Section Padding */
+    .about,
+    .experience,
+    .projects,
+    .skills,
+    .contact {
+        padding: 60px 0;
+    }
+
+    /* Section Headings */
+    .about h2,
+    .experience h2,
+    .projects h2,
+    .skills h2,
+    .contact h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Timeline Item Content */
+    .timeline-content {
+        padding: 1rem;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .timeline-content ul li {
+        font-size: 0.9rem;
+    }
+
+    /* Project Card */
+    .project-header h3 {
+        font-size: 1rem;
+    }
+
+    .project-role {
+        font-size: 0.8rem;
+    }
+
+    /* Skills Tags */
+    .skill-tag {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    /* Form Elements */
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Footer */
+    .footer .container {
+        padding: 1rem;
+    }
+
+    .footer p {
+        font-size: 0.9rem;
+    }
+
+    .social-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Extra Large Screens (1400px and above) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .hero,
+    .contact-form,
+    .footer {
+        display: none;
+    }
+
+    .about,
+    .experience,
+    .projects,
+    .skills {
+        page-break-inside: avoid;
+    }
+
+    .project-card,
+    .timeline-item {
+        page-break-inside: avoid;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    a {
+        text-decoration: none;
+        color: #2c3e50;
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+    }
+
+    .about,
+    .projects,
+    .contact,
+    .contact-form {
+        background-color: #2a2a2a;
+        color: #e0e0e0;
+    }
+
+    .experience,
+    .skills {
+        background-color: #1a1a1a;
+    }
+
+    .timeline-content,
+    .certifications-list li {
+        background-color: #333;
+    }
+
+    .about h2,
+    .experience h2,
+    .projects h2,
+    .skills h2,
+    .contact h2,
+    .timeline-content h3,
+    .project-header,
+    .skills-category h3 {
+        color: #e0e0e0;
+    }
+
+    .timeline-content .company,
+    .project-role,
+    .contact-info strong,
+    .info-item strong {
+        color: #a8d5ff;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background-color: #333;
+        color: #e0e0e0;
+        border-color: #555;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: #667eea;
+    }
+}

@@ -1,0 +1,56 @@
+{
+  "site": {
+    "title": "Aaryan R Londhe - Cybersecurity Expert",
+    "description": "Professional portfolio showcasing cybersecurity expertise, experience, and projects",
+    "author": "Aaryan R Londhe",
+    "email": "aaryanrlondhe@gmail.com",
+    "phone": "+1 839-290-7009",
+    "location": "Aiken, South Carolina",
+    "social": {
+      "linkedin": "https://linkedin.com/in/aaryanrlondhe",
+      "github": "https://github.com/yourusername"
+    }
+  },
+  "sections": {
+    "home": {
+      "enabled": true,
+      "title": "Home",
+      "subtitle": "Cybersecurity Professional"
+    },
+    "about": {
+      "enabled": true,
+      "title": "About Me"
+    },
+    "experience": {
+      "enabled": true,
+      "title": "Work Experience"
+    },
+    "projects": {
+      "enabled": true,
+      "title": "Featured Projects"
+    },
+    "skills": {
+      "enabled": true,
+      "title": "Skills & Certifications"
+    },
+    "contact": {
+      "enabled": true,
+      "title": "Get In Touch"
+    }
+  },
+  "theme": {
+    "primary-color": "#667eea",
+    "secondary-color": "#764ba2",
+    "accent-color": "#3498db",
+    "light-bg": "#f8f9fa",
+    "dark-bg": "#2c3e50"
+  },
+  "features": {
+    "smooth-scroll": true,
+    "animations": true,
+    "dark-mode": true,
+    "form-storage": true,
+    "analytics": false,
+    "newsletter": false
+  }
+}
